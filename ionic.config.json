@@ -1,5 +1,7 @@
 {
   "name": "eFincas",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
