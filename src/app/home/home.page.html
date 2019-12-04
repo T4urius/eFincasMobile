@@ -2,12 +2,10 @@
   <ion-label>
     Suas informações
   </ion-label>
-  <ion-item style="bottom: -6%; left: 29%;">
-    <ion-label style="font-size: smaller; opacity: 0.5;">Modo noturno</ion-label>
-    <ion-toggle color="dark" (ionChange)="toggleIsActive($event)"></ion-toggle>
-  </ion-item>
 </ion-item-divider>
-<ion-slides #ionSlidesSaldoPagar pager="true" [options]="slideOpts" style="margin: 0; background-color: azure; bottom: 27%;">
+
+<ion-slides #ionSlidesSaldoPagar pager="true" [options]="slideOpts"
+  style="margin: 0; background-color: azure; bottom: 27%; height: 34%;">
   <ion-slide>
     <ion-card style="background-color: sienna;">
       <ion-card-content style="color: white;padding: 50px; width: -webkit-fill-available;">
@@ -42,4 +40,8 @@
       {{item.name}}
     </ion-item>
   </ion-list>
-</ion-content>  
+</ion-content>
+
+<!-- Inserir modo noturno, verificar local e ajustar alguns processos -->
+<!-- <ion-label>Modo noturno</ion-label>
+<ion-toggle color="dark" (ionChange)="toggleIsActive($event)"></ion-toggle> -->
