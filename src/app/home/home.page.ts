@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, ViewChild, ElementRef } from '@angular/core';
+import { type } from 'os';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
+  @ViewChild('ionSlidesSaldoPagar', { read: ElementRef, static: false }) ionSlide: ElementRef;
 
   slideOpts = {
     speed: 400,
@@ -31,6 +34,16 @@ export class HomePage {
     { id: 10, name: 'Flash' },
   ];
 
-  constructor() { }
+  constructor() {
+  }
+
+  toggleIsActive(e) {
+    if (e.detail.checked == true) {
+      this.ionSlide.nativeElement.style.backgroundColor = 'black';
+    }
+    else {
+      this.ionSlide.nativeElement.style.backgroundColor = 'azure';
+    }
+  }
 
 }
