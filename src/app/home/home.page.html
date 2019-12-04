@@ -1,29 +1,41 @@
-<ion-list>
-  <ion-item>
-    <ion-label>Alterar saldo</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Adicionar conta</ion-label>
-  </ion-item>
-</ion-list>
+<ion-item-divider>
+  <ion-label>
+    Suas informações
+  </ion-label>
+</ion-item-divider>
+<ion-slides pager="true" [options]="slideOpts" style="margin: 0; background-color: azure; bottom: 31%;">
+  <ion-slide>
+    <ion-card style="background-color: sienna;">
+      <ion-card-content style="color: white;padding: 50px; width: -webkit-fill-available;">
+        <ion-card-title style="color:white;font-size: large;">
+          Saldo atual:
+        </ion-card-title>
+        200,00
+      </ion-card-content>
+    </ion-card>
+  </ion-slide>
+  <ion-slide>
+    <ion-card style="background-color: maroon;">
+      <ion-card-content style="color: white;padding: 50px; width: -webkit-fill-available;">
+        <ion-card-title style="color:white;font-size: large;">
+          A pagar
+        </ion-card-title>
+        R$ 100,00
+      </ion-card-content>
+    </ion-card>
+  </ion-slide>
+</ion-slides>
 
-<ion-card
-  style="display: flex;position: absolute;bottom: 0;width: -webkit-fill-available;justify-content: space-between;"
->
-  <ion-card-content
-    style="color: black;padding: 23px; width: -webkit-fill-available;"
-  >
-    <ion-card-title style="color:black;font-size: large;">
-      A pagar:
-    </ion-card-title>
-    R$ 100,00
-  </ion-card-content>
-  <ion-card-content
-    style="color: black;padding: 23px; width: -webkit-fill-available;"
-  >
-    <ion-card-title style="color:black;font-size: large;">
-      Saldo atual:
-    </ion-card-title>
-    200,00
-  </ion-card-content>
-</ion-card>
+<ion-item-divider style=" display: flex; position: relative; bottom: 63%;">
+  <ion-label>
+    Historico
+  </ion-label>
+</ion-item-divider>
+
+<ion-content style="display: flex; position: fixed; bottom: 24; flex-direction: column;">
+  <ion-list style="position: absolute; bottom: 0%; margin: 0; padding: 0; height: 100%; top: 37%; width: 100%;">
+    <ion-item style="background-color: azure;" *ngFor="let item of items">
+      {{item.name}}
+    </ion-item>
+  </ion-list>
+</ion-content>
