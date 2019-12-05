@@ -22,16 +22,16 @@ export class HomePage {
 
   items = [
 
-    { id: 1, name: 'Salário inserido no valor de R$ 600,00' },
-    { id: 2, name: 'Salário inserido no valor de R$ 700,00' },
-    { id: 3, name: 'Salário inserido no valor de R$ 100,00' },
-    { id: 4, name: 'Salário inserido no valor de R$ 1000,00' },
-    { id: 5, name: 'Salário inserido no valor de R$ 900,00' },
-    { id: 6, name: 'Transferência inserido no valor de R$ 300,00' },
-    { id: 7, name: 'Transferência inserida no valor de R$ 450,00' },
+    { id: 1, name: 'Salário no valor de R$ 600,00' },
+    { id: 2, name: 'Salário no valor de R$ 700,00' },
+    { id: 3, name: 'Salário no valor de R$ 100,00' },
+    { id: 4, name: 'Salário no valor de R$ 1000,00' },
+    { id: 5, name: 'Salário no valor de R$ 900,00' },
+    { id: 6, name: 'Transferência realizada no valor de R$ 300,00' },
+    { id: 7, name: 'Transferência realizada no valor de R$ 450,00' },
     { id: 8, name: 'Renda Extra inserida no valor de R$ 100,00' },
-    { id: 9, name: 'Dispesa inserida no valor de R$ 90,00' },
-    { id: 10, name: 'Dispesa inserida no valor de R$ 20,00' },
+    { id: 9, name: 'Despesa no valor de R$ 90,00' },
+    { id: 10, name: 'Despesa no valor de R$ 20,00' },
   ];
 
   constructor(private navCtrl: NavController) {
