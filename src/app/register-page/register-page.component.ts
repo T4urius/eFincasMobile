@@ -8,30 +8,11 @@ import { NavController } from '@ionic/angular';
 })
 export class RegisterPageComponent implements OnInit {
 
-  constructor(private navCtrl: NavController) {
+  constructor() {
   }
 
   ngOnInit() {
 
   }
 
-  openRegisters() {
-    this.navCtrl.navigateForward('register');
-  }
-
-  openManage() {
-    this.navCtrl.navigateForward('manage');
-  }
-
-  openInvestments() {
-    this.navCtrl.navigateForward('investments');
-  }
-
-  openConfigures() {
-    this.navCtrl.navigateForward('configures');
-  }
-
-  openHome() {
-    this.navCtrl.navigateForward('');
-  }
 }
