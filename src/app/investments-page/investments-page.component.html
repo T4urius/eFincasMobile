@@ -1,3 +1,39 @@
-<p>
-  investments-page works!
-</p>
+<ion-item-divider>
+    <ion-menu side="start" contentId="myContent">
+      <ion-header>
+        <ion-toolbar translucent>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item>
+            <ion-icon name="home" slot="start"></ion-icon>
+            <ion-label (click)="openHome()">Resumos</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="paper" slot="start"></ion-icon>
+            <ion-label (click)="openManage()">Gerenciar</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="filing" slot="start"></ion-icon>
+            <ion-label (click)="openRegisters()">Registros</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="trending-up" slot="start"></ion-icon>
+            <ion-label (click)="openInvestments()">Investimentos</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="settings" slot="start"></ion-icon>
+            <ion-label (click)="openConfigures()">Configurações</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+  
+    <div id="myContent">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </div>
+  </ion-item-divider>
