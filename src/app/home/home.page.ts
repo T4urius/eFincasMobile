@@ -1,5 +1,5 @@
-import { Component, OnInit, OnChanges, ViewChild, ElementRef } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -34,22 +34,42 @@ export class HomePage {
     { id: 10, name: 'Dispesa inserida no valor de R$ 20,00' },
   ];
 
-  constructor(private menu: MenuController) {
+  constructor(private navCtrl: NavController) {
   }
 
-  openFirst() {
-    this.menu.enable(true, 'first');
-    this.menu.open('first');
+  openRegisters() {
+    this.navCtrl.navigateForward('register');
   }
 
-  openEnd() {
-    this.menu.open('end');
+  openManage() {
+    this.navCtrl.navigateForward('manage');
   }
 
-  openCustom() {
-    this.menu.enable(true, 'custom');
-    this.menu.open('custom');
+  openInvestments() {
+    this.navCtrl.navigateForward('investments');
   }
+
+  openConfigures() {
+    this.navCtrl.navigateForward('configures');
+  }
+
+  openHome() {
+    this.navCtrl.navigateForward('');
+  }
+
+  // openFirst() {
+  //   this.menu.enable(true, 'first');
+  //   this.menu.open('first');
+  // }
+
+  // openEnd() {
+  //   this.menu.open('end');
+  // }
+
+  // openCustom() {
+  //   this.menu.enable(true, 'custom');
+  //   this.menu.open('custom');
+  // }
 
   // toggleIsActive(e) {
   //   if (e.detail.checked == true) {
