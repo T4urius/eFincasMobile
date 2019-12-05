@@ -1,4 +1,42 @@
 <ion-item-divider>
+  <ion-menu side="start" contentId="myContent">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="home" slot="start"></ion-icon>
+          <ion-label>Minha Página</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="paper" slot="start"></ion-icon>
+          <ion-label>Registrar Conta</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="cash" slot="start"></ion-icon>
+          <ion-label>A pagar</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="wallet" slot="start"></ion-icon>
+          <ion-label>A Receber</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="settings" slot="start"></ion-icon>
+          <ion-label>Configurações</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div id="myContent" class="ion-page">
+    <ion-buttons slot="start">
+      <ion-menu-button style="position: relative; left: 85%; bottom: 6%;"></ion-menu-button>
+    </ion-buttons>
+  </div>
+
   <ion-label>
     Suas informações
   </ion-label>
@@ -32,7 +70,7 @@
   </ion-slide>
 </ion-slides>
 
-<ion-item-divider style="position: relative; bottom: 54%;">
+<ion-item-divider style="position: relative; bottom: 54%;z-index: 1;">
   <ion-label>
     Movimentações e Registros
   </ion-label>
