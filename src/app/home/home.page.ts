@@ -1,4 +1,5 @@
 import { Component, OnInit, OnChanges, ViewChild, ElementRef } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -21,19 +22,33 @@ export class HomePage {
 
   items = [
 
-    { id: 1, name: 'Superman' },
-    { id: 2, name: 'Batman' },
-    { id: 3, name: 'BatGirl' },
-    { id: 4, name: 'Robin' },
-    { id: 5, name: 'Flash' },
-    { id: 6, name: 'Superman' },
-    { id: 7, name: 'Batman' },
-    { id: 8, name: 'BatGirl' },
-    { id: 9, name: 'Robin' },
-    { id: 10, name: 'Flash' },
+    { id: 1, name: 'Salário inserido no valor de R$ 600,00' },
+    { id: 2, name: 'Salário inserido no valor de R$ 700,00' },
+    { id: 3, name: 'Salário inserido no valor de R$ 100,00' },
+    { id: 4, name: 'Salário inserido no valor de R$ 1000,00' },
+    { id: 5, name: 'Salário inserido no valor de R$ 900,00' },
+    { id: 6, name: 'Transferência inserido no valor de R$ 300,00' },
+    { id: 7, name: 'Transferência inserida no valor de R$ 450,00' },
+    { id: 8, name: 'Renda Extra inserida no valor de R$ 100,00' },
+    { id: 9, name: 'Dispesa inserida no valor de R$ 90,00' },
+    { id: 10, name: 'Dispesa inserida no valor de R$ 20,00' },
   ];
 
-  constructor() {
+  constructor(private menu: MenuController) {
+  }
+
+  openFirst() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
+  }
+
+  openEnd() {
+    this.menu.open('end');
+  }
+
+  openCustom() {
+    this.menu.enable(true, 'custom');
+    this.menu.open('custom');
   }
 
   // toggleIsActive(e) {

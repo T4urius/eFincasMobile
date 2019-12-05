@@ -7,34 +7,38 @@
 <ion-slides #ionSlidesSaldoPagar pager="true" [options]="slideOpts"
   style="margin: 0; background-color: azure; bottom: 27%; height: 34%;">
   <ion-slide>
-    <ion-card style="background-color: sienna;">
+    <ion-card style="background-color: sienna; width: 76%; height: 87%;">
       <ion-card-content style="color: white;padding: 50px; width: -webkit-fill-available;">
-        <ion-card-title style="color:white;font-size: large;">
+        <ion-card-title style="color: white; font-size: large; position: absolute; right: 61%; top: 12%;">
           Saldo atual:
         </ion-card-title>
-        200,00
+        <ion-label style="position: absolute; right: 10%; bottom: 0%; font-size: xx-large;">
+          R$ 200,00
+        </ion-label>
       </ion-card-content>
     </ion-card>
   </ion-slide>
   <ion-slide>
-    <ion-card style="background-color: maroon;">
+    <ion-card style="background-color: maroon; width: 76%; height: 87%;">
       <ion-card-content style="color: white;padding: 50px; width: -webkit-fill-available;">
-        <ion-card-title style="color:white;font-size: large;">
+        <ion-card-title style="color: white; font-size: large; position: absolute; right: 72%; top: 12%;">
           A pagar
         </ion-card-title>
-        R$ 100,00
+        <ion-label style="position: absolute; right: 10%; bottom: 0%; font-size: xx-large;">
+          R$ 200,00
+        </ion-label>
       </ion-card-content>
     </ion-card>
   </ion-slide>
 </ion-slides>
 
-<ion-item-divider style=" display: flex; position: relative; bottom: 54%;">
+<ion-item-divider style="position: relative; bottom: 54%;">
   <ion-label>
-    Historico
+    Movimentações e Registros
   </ion-label>
 </ion-item-divider>
 
-<ion-content style="display: flex; position: fixed; bottom: 24; flex-direction: column;">
+<ion-content style="position: fixed; bottom: 24; flex-direction: column;">
   <ion-list style="position: absolute; bottom: 0%; margin: 0; padding: 0; height: 100%; top: 46%; width: 100%;">
     <ion-item style="background-color: azure;" *ngFor="let item of items">
       {{item.name}}
