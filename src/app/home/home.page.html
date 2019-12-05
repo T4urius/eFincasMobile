@@ -9,19 +9,19 @@
       <ion-list>
         <ion-item>
           <ion-icon name="home" slot="start"></ion-icon>
-          <ion-label>Minha Página</ion-label>
+          <ion-label>Resumos</ion-label>
         </ion-item>
         <ion-item>
           <ion-icon name="paper" slot="start"></ion-icon>
-          <ion-label>Registrar Conta</ion-label>
+          <ion-label>Gerenciar</ion-label>
         </ion-item>
         <ion-item>
-          <ion-icon name="cash" slot="start"></ion-icon>
-          <ion-label>A pagar</ion-label>
+          <ion-icon name="filing" slot="start"></ion-icon>
+          <ion-label>Registros</ion-label>
         </ion-item>
         <ion-item>
-          <ion-icon name="wallet" slot="start"></ion-icon>
-          <ion-label>A Receber</ion-label>
+          <ion-icon name="trending-up" slot="start"></ion-icon>
+          <ion-label>Investimentos</ion-label>
         </ion-item>
         <ion-item>
           <ion-icon name="settings" slot="start"></ion-icon>
@@ -31,9 +31,9 @@
     </ion-content>
   </ion-menu>
 
-  <div id="myContent" class="ion-page">
+  <div id="myContent">
     <ion-buttons slot="start">
-      <ion-menu-button style="position: relative; left: 85%; bottom: 6%;"></ion-menu-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
   </div>
 
@@ -45,13 +45,16 @@
 <ion-slides #ionSlidesSaldoPagar pager="true" [options]="slideOpts"
   style="margin: 0; background-color: azure; bottom: 27%; height: 34%;">
   <ion-slide>
-    <ion-card style="background-color: sienna; width: 76%; height: 87%;">
+    <ion-card style="background-color: sienna; width: 76%; height: 86%;">
       <ion-card-content style="color: white;padding: 50px; width: -webkit-fill-available;">
         <ion-card-title style="color: white; font-size: large; position: absolute; right: 61%; top: 12%;">
           Saldo atual:
         </ion-card-title>
         <ion-label style="position: absolute; right: 10%; bottom: 0%; font-size: xx-large;">
           R$ 200,00
+        </ion-label>
+        <ion-label style="position: absolute; right: 10%; bottom: -25%;">
+          A receber: R$ 1050,00
         </ion-label>
       </ion-card-content>
     </ion-card>
@@ -60,10 +63,13 @@
     <ion-card style="background-color: maroon; width: 76%; height: 87%;">
       <ion-card-content style="color: white;padding: 50px; width: -webkit-fill-available;">
         <ion-card-title style="color: white; font-size: large; position: absolute; right: 72%; top: 12%;">
-          A pagar
+          A pagar:
         </ion-card-title>
         <ion-label style="position: absolute; right: 10%; bottom: 0%; font-size: xx-large;">
           R$ 200,00
+        </ion-label>
+        <ion-label style="position: absolute; right: 10%; bottom: -25%;">
+          Pagar até receber: R$ 150,00
         </ion-label>
       </ion-card-content>
     </ion-card>
