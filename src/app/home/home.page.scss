@@ -1,3 +1,133 @@
 .my-custom-menu {
   --width: 500px;
 }
+
+.ionItemDividerMenu {
+  background-color: var(--dark);
+  color: var(--white);
+}
+
+.ionSlidesSaldoPagar {
+  margin: 0;
+  background-color: var(--azure);
+  bottom: 27%;
+  height: 34%;
+  --bullet-background: var(--red);
+  --bullet-background-active: var(--earthblue);
+
+  .ionCardSaldo {
+    background-color: var(--vanilla);
+    width: 76%;
+    height: 70%;
+
+    .ionCardContentSaldo {
+      color: var(--black);
+      padding: 50px;
+      width: var(--width);
+
+      .ionCardTitleSaldo {
+        color: var(--black);
+        font-size: large;
+        position: absolute;
+        right: 61%;
+        top: 12%;
+      }
+
+      .ionLabelSaldo {
+        position: absolute;
+        right: 10%;
+        bottom: 0%;
+        font-size: xx-large;
+      }
+
+      .ionIconEyeSaldo {
+        position: absolute;
+        left: 30%;
+        bottom: 18%;
+      }
+
+      .ionIconEyeOffSaldo {
+        position: absolute;
+        left: 30%;
+        bottom: 18%;
+        visibility: hidden;
+      }
+
+      .ionLabel2Saldo {
+        position: absolute;
+        right: 10%;
+        bottom: -25%;
+      }
+    }
+  }
+
+  .ionCardPagar {
+    background-color: var(--cranberry);
+    width: 76%;
+    height: 70%;
+
+    .ionCardContentPagar {
+      color: var(--white);
+      padding: 50px;
+      width: var(--width);
+
+      .ionCardTitlePagar {
+        color: var(--white);
+        font-size: large;
+        position: absolute;
+        right: 72%;
+        top: 12%;
+      }
+
+      .ionLabelPagar {
+        position: absolute;
+        right: 10%;
+        bottom: 0%;
+        font-size: xx-large;
+      }
+
+      .ionIconEyePagar {
+        position: absolute;
+        left: 30%;
+        bottom: 18%;
+      }
+
+      .ionIconEyeOffPagar {
+        position: absolute;
+        left: 30%;
+        bottom: 18%;
+        visibility: hidden;
+      }
+
+      .ionLabel2Pagar {
+        position: absolute;
+        right: 10%;
+        bottom: -25%;
+      }
+    }
+  }
+}
+
+.ionItemDivider {
+  background-color: var(--dark);
+  color: var(--white);
+  position: relative;
+  bottom: 54%;
+  z-index: 1;
+}
+
+.ionContent {
+  position: fixed;
+  bottom: 24;
+  flex-direction: column;
+
+  .ionList {
+    position: absolute;
+    bottom: 0%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    top: 46%;
+    width: 100%;
+  }
+}

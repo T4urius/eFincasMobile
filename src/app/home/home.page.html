@@ -1,7 +1,7 @@
-<ion-item-divider>
+<ion-item-divider class="ionItemDividerMenu">
   <ion-menu side="start" contentId="myContent">
     <ion-header>
-      <ion-toolbar translucent>
+      <ion-toolbar color="dark">
         <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -38,54 +38,53 @@
   </div>
 </ion-item-divider>
 
-<ion-slides #ionSlidesSaldoPagar pager="true" [options]="slideOpts"
-  style="margin: 0; background-color: azure; bottom: 27%; height: 34%;">
+<ion-slides class="ionSlidesSaldoPagar" #ionSlidesSaldoPagar pager="true" [options]="slideOpts">
   <ion-slide>
-    <ion-card style="background-color: sienna; width: 76%; height: 86%;">
-      <ion-card-content style="color: white;padding: 50px; width: -webkit-fill-available;">
-        <ion-card-title style="color: white; font-size: large; position: absolute; right: 61%; top: 12%;">
+    <ion-card class="ionCardSaldo">
+      <ion-card-content class="ionCardContentSaldo">
+        <ion-card-title class="ionCardTitleSaldo">
           Saldo atual:
         </ion-card-title>
-        <ion-label id="saldoAtualLabel" (click)="openRegisters()"
-          style="position: absolute; right: 10%; bottom: 0%; font-size: xx-large;">
-          R$ 200,00
+        <ion-label id="saldoAtualLabel" (click)="openRegisters()" class="ionLabelSaldo">
+          R$
+          <ion-label #totalSaldo> 200,00</ion-label>
         </ion-label>
-        <ion-icon name="eye" style="position: absolute; left: 30%; bottom: 18%;"></ion-icon>
-        <ion-icon name="eye-off" style="position: absolute; left: 30%; bottom: 18%; visibility: hidden;"></ion-icon>
-        <ion-label style="position: absolute; right: 10%; bottom: -25%;">
-          A receber: R$ 1050,00
+        <ion-icon name="eye" class="ionIconEyeSaldo" (click)="hideSaldo()"></ion-icon>
+        <ion-icon #eyeOff name="eye-off" class="ionIconEyeOffSaldo" (click)="showSaldo()"></ion-icon>
+        <ion-label class="ionLabel2Saldo">
+          A receber: R$<ion-label #receber> 1050,00</ion-label>
         </ion-label>
       </ion-card-content>
     </ion-card>
   </ion-slide>
   <ion-slide>
-    <ion-card style="background-color: maroon; width: 76%; height: 87%;">
-      <ion-card-content style="color: white;padding: 50px; width: -webkit-fill-available;">
-        <ion-card-title style="color: white; font-size: large; position: absolute; right: 72%; top: 12%;">
+    <ion-card class="ionCardPagar">
+      <ion-card-content class="ionCardContentPagar">
+        <ion-card-title class="ionCardTitlePagar">
           A pagar:
         </ion-card-title>
-        <ion-label style="position: absolute; right: 10%; bottom: 0%; font-size: xx-large;">
-          R$ 200,00
+        <ion-label class="ionLabelPagar">
+          R$ <ion-label #totalPagar>200,00</ion-label>
         </ion-label>
-        <ion-icon name="eye" style="position: absolute; left: 30%; bottom: 18%;"></ion-icon>
-        <ion-icon name="eye-off" style="position: absolute; left: 30%; bottom: 18%; visibility: hidden"></ion-icon>
-        <ion-label style="position: absolute; right: 10%; bottom: -25%;">
-          Pagar até receber: R$ 150,00
+        <ion-icon name="eye" class="ionIconEyePagar" (click)="hidePagar()"></ion-icon>
+        <ion-icon #eyePagar name="eye-off" class="ionIconEyeOffPagar" (click)="showPagar()"></ion-icon>
+        <ion-label class="ionLabel2Pagar">
+          Pagar até receber: R$ <ion-label #pagar>150,00</ion-label>
         </ion-label>
       </ion-card-content>
     </ion-card>
   </ion-slide>
 </ion-slides>
 
-<ion-item-divider style="position: relative; bottom: 54%;z-index: 1;">
+<ion-item-divider class="ionItemDivider">
   <ion-label>
     Movimentações e Registros
   </ion-label>
 </ion-item-divider>
 
-<ion-content style="position: fixed; bottom: 24; flex-direction: column;">
-  <ion-list style="position: absolute; bottom: 0%; margin: 0; padding: 0; height: 100%; top: 46%; width: 100%;">
-    <ion-item style="background-color: azure;" *ngFor="let item of items">
+<ion-content class="ionContent">
+  <ion-list class="ionList">
+    <ion-item *ngFor="let item of items">
       {{item.name}}
     </ion-item>
   </ion-list>
