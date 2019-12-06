@@ -84,8 +84,16 @@
 
 <ion-content class="ionContent">
   <ion-list class="ionList">
-    <ion-item *ngFor="let item of items">
-      {{item.name}}
+    <ion-item *ngFor="let item of items" (click)="expandItem(item)">
+      <ion-label>
+        {{item.name}}
+      </ion-label>
+      <ion-label>
+        <!-- <app-expandable-component style="display: flex; position: relative; left: 60%; top: 30%;" expandHeight="100px"
+          [expanded]="item.expanded"> -->
+        {{item.valor}}
+        <!-- </app-expandable-component> -->
+      </ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

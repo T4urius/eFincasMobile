@@ -29,16 +29,16 @@ export class HomePage {
 
   items = [
 
-    { id: 1, name: 'Salário no valor de R$ 600,00' },
-    { id: 2, name: 'Salário no valor de R$ 700,00' },
-    { id: 3, name: 'Salário no valor de R$ 100,00' },
-    { id: 4, name: 'Salário no valor de R$ 1000,00' },
-    { id: 5, name: 'Salário no valor de R$ 900,00' },
-    { id: 6, name: 'Transferência realizada no valor de R$ 300,00' },
-    { id: 7, name: 'Transferência realizada no valor de R$ 450,00' },
-    { id: 8, name: 'Renda Extra inserida no valor de R$ 100,00' },
-    { id: 9, name: 'Despesa no valor de R$ 90,00' },
-    { id: 10, name: 'Despesa no valor de R$ 20,00' },
+    { id: 1, name: 'Salário', valor: 'R$ 600,00', expanded: false },
+    { id: 2, name: 'Salário', valor: 'R$ 700,00', expanded: false },
+    { id: 3, name: 'Salário ', valor: 'R$ 100,00', expanded: false },
+    { id: 4, name: 'Salário ', valor: 'R$ 1000,00', expanded: false },
+    { id: 5, name: 'Salário ', valor: 'R$ 900,00', expanded: false },
+    { id: 6, name: 'Transferência ', valor: 'R$ 300,00', expanded: false },
+    { id: 7, name: 'Transferência ', valor: 'R$ 450,00', expanded: false },
+    { id: 8, name: 'Renda Extra ', valor: 'R$ 100,00', expanded: false },
+    { id: 9, name: 'Despesa ', valor: 'R$ 90,00', expanded: false },
+    { id: 10, name: 'Despesa ', valor: 'R$ 20,00', expanded: false },
   ];
 
   constructor(private navCtrl: NavController) {
@@ -86,6 +86,22 @@ export class HomePage {
     this.eyePagar.nativeElement.style.visibility = 'hidden';
     this.pagar.nativeElement.style.visibility = 'visible';
     this.totalPagar.nativeElement.style.visibility = 'visible';
+  }
+
+  expandItem(item): void {
+    if (item.expanded) {
+      item.expanded = false;
+    }
+    else {
+      this.items.map(listItem => {
+        if (item == listItem) {
+          listItem.expanded = !listItem.expanded;
+        } else {
+          listItem.expanded = false;
+        }
+        return listItem;
+      });
+    }
   }
 
   // openFirst() {
