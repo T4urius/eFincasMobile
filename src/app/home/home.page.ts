@@ -29,16 +29,16 @@ export class HomePage {
 
   items = [
 
-    { id: 1, name: 'Salário', valor: 'R$ 600,00', expanded: false },
-    { id: 2, name: 'Salário', valor: 'R$ 700,00', expanded: false },
-    { id: 3, name: 'Salário ', valor: 'R$ 100,00', expanded: false },
-    { id: 4, name: 'Salário ', valor: 'R$ 1000,00', expanded: false },
-    { id: 5, name: 'Salário ', valor: 'R$ 900,00', expanded: false },
-    { id: 6, name: 'Transferência ', valor: 'R$ 300,00', expanded: false },
-    { id: 7, name: 'Transferência ', valor: 'R$ 450,00', expanded: false },
-    { id: 8, name: 'Renda Extra ', valor: 'R$ 100,00', expanded: false },
-    { id: 9, name: 'Despesa ', valor: 'R$ 90,00', expanded: false },
-    { id: 10, name: 'Despesa ', valor: 'R$ 20,00', expanded: false },
+    { id: 1, name: 'Salário', valor: 'R$ 600,00', date: '10 de Abril', expanded: false },
+    { id: 2, name: 'Salário', valor: 'R$ 700,00', date: '20 de Junho', expanded: false },
+    { id: 3, name: 'Salário ', valor: 'R$ 100,00', date: '20 de Dezembro', expanded: false },
+    { id: 4, name: 'Salário ', valor: 'R$ 1000,00', date: '20 de Agosto', expanded: false },
+    { id: 5, name: 'Salário ', valor: 'R$ 900,00', date: '20 de Janeiro', expanded: false },
+    { id: 6, name: 'Transferência ', valor: 'R$ 300,00', date: '20 de Maio', expanded: false },
+    { id: 7, name: 'Transferência ', valor: 'R$ 450,00', date: '20 de Março', expanded: false },
+    { id: 8, name: 'Renda Extra ', valor: 'R$ 100,00', date: '20 de Julho', expanded: false },
+    { id: 9, name: 'Despesa ', valor: 'R$ 90,00', date: '20 de Setembro', expanded: false },
+    { id: 10, name: 'Despesa ', valor: 'R$ 20,00', date: '20 de Outubro', expanded: false },
   ];
 
   constructor(private navCtrl: NavController) {
