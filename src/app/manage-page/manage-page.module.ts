@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { ManagePageComponent } from './manage-page.component';
+import { ReceivePageComponent } from './tabs/receive-page/receive-page.component';
+import { PayPageComponent } from './tabs/pay-page/pay-page.component';
 
 @NgModule({
   imports: [
@@ -18,7 +20,7 @@ import { ManagePageComponent } from './manage-page.component';
       },
     ])
   ],
-  declarations: [ManagePageComponent],
+  declarations: [ManagePageComponent, ReceivePageComponent, PayPageComponent],
   exports: [ManagePageComponent]
 })
 export class ManagePageComponentModule { }

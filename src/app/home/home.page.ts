@@ -19,7 +19,7 @@ export class HomePage {
 
   slideOpts = {
     speed: 400,
-    initialSlide: 0,
+    initialSlide: 1,
     pagination: {
       el: '.swiper-pagination',
       type: 'bullets',
@@ -48,8 +48,12 @@ export class HomePage {
     this.navCtrl.navigateForward('register');
   }
 
-  openManage() {
-    this.navCtrl.navigateForward('manage');
+  openManagePay() {
+    this.navCtrl.navigateForward('manage/pay');
+  }
+
+  openManageReceive() {
+    this.navCtrl.navigateForward('manage/receive');
   }
 
   openInvestments() {
@@ -86,6 +90,10 @@ export class HomePage {
     this.eyePagar.nativeElement.style.visibility = 'hidden';
     this.pagar.nativeElement.style.visibility = 'visible';
     this.totalPagar.nativeElement.style.visibility = 'visible';
+  }
+
+  openHelp() {
+    console.log('ajudando');
   }
 
   expandItem(item): void {

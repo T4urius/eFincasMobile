@@ -1,7 +1,24 @@
 <ion-header translucent>
-    <ion-toolbar>
+    <ion-toolbar color="dark">
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
+            <ion-label>
+                Gerenciar
+            </ion-label>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
+
+<ion-tabs>
+    <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="pay">
+            <ion-icon name="calendar"></ion-icon>
+            <ion-label>A pagar</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="receive">
+            <ion-icon name="contacts"></ion-icon>
+            <ion-label>A receber</ion-label>
+        </ion-tab-button>
+    </ion-tab-bar>
+</ion-tabs>
