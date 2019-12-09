@@ -1,10 +1,14 @@
 <ion-content style="width: 100%; height: 50%; top: 12%;">
   <ion-item>
-    <ion-label position="floating">Descrição</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-label>Tipo de recebimento</ion-label>
+    <ion-select placeholder="Selecione um">
+      <ion-select-option *ngFor="let tipoRecebimento of tipoRecebimentos">
+        {{tipoRecebimento.name}}
+      </ion-select-option>
+    </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Valor a receber</ion-label>
+    <ion-label position="floating">Digite o valor a receber</ion-label>
     <ion-input type="number"></ion-input>
   </ion-item>
   <ion-item>

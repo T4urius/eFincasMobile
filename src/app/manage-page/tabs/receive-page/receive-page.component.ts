@@ -15,6 +15,12 @@ export class ReceivePageComponent implements OnInit {
     { id: 5, name: 'Salário ', valor: 'R$ 900,00', date: '20 de Janeiro', expanded: false },    
   ]
 
+  tipoRecebimentos = [
+    { id: 1, type: 'salary', name: 'Salário'},
+    { id: 2, type: 'transfer', name: 'Transferência'},
+    { id: 3, type: 'other', name: 'Outros'},
+  ]
+
   constructor() { }
 
   ngOnInit() { }
