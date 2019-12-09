@@ -13,6 +13,9 @@ import { ManagePageComponentModule } from './manage-page/manage-page.module';
 import { ConfiguresPageComponentModule } from './configures-page/configures-page.module';
 import { InvestmentsPageComponentModule } from './investments-page/investments-page.module';
 
+import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+import { SQLite } from '@ionic-native/sqlite/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -28,7 +31,9 @@ import { InvestmentsPageComponentModule } from './investments-page/investments-p
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    SQLite,
+    SQLitePorter,
   ],
   bootstrap: [AppComponent]
 })
