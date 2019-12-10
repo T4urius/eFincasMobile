@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
+import { HttpClientModule } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -15,6 +16,8 @@ import { InvestmentsPageComponentModule } from './investments-page/investments-p
 
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
+import { DevelopersPageComponentModule } from './developer-page/developers/developers-page.module';
+import { DeveloperPageComponentModule } from './developer-page/developer/developer-page.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,11 +25,14 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    HttpClientModule,
     AppRoutingModule,
     RegisterPageComponentModule,
     ManagePageComponentModule,
     ConfiguresPageComponentModule,
     InvestmentsPageComponentModule,
+    DevelopersPageComponentModule,
+    DeveloperPageComponentModule
   ],
   providers: [
     StatusBar,

@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Platform } from '@ionic/angular';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { HttpClient } from '@angular/common/http';
+import { disableDebugTools } from '@angular/platform-browser';
 
 export interface Dev {
   id: number,
@@ -52,7 +53,7 @@ export class DatabaseService {
     return this.dbReady.asObservable();
   }
 
-  getDev(): Observable<Dev[]> {
+  getDevs(): Observable<Dev[]> {
     return this.developers.asObservable();
   }
 
