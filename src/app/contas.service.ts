@@ -39,6 +39,18 @@ export class ContaService {
             })
             .catch((e) => console.error(e));
     }
+
+    public remove(id: number) {
+        return this.dbService.getDB()
+            .then((db: SQLiteObject) => {
+                let sql = 'delete from contas where id = ?';
+                let data = [id];
+
+                return db.executeSql(sql, data)
+                    .catch((e) => console.error(e));
+            })
+            .catch((e) => console.error(e));
+    }
 }
 
 export class Conta {

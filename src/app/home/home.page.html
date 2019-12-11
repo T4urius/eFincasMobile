@@ -93,23 +93,28 @@
 
 <ion-content class="ionContent">
   <ion-list class="ionList">
-    <ion-item *ngFor="let conta of contas" (click)="expandItem(item)">
-      <ion-label>
-        {{conta.description}}:
-      </ion-label>
-      <ion-label>
-        <!-- <app-expandable-component style="display: flex; position: relative; left: 60%; top: 30%;" expandHeight="100px"
-          [expanded]="item.expanded"> -->
-        R${{conta.value | number: '2.2-9' }}
-        <!-- </app-expandable-component> -->
-      </ion-label>
-      <ion-label>
-        {{conta.date | date:'d/MM' }}
-      </ion-label>
+    <ion-item class="ionItemTitle">
+      <ion-label class="ionItemLabel">Descrição</ion-label>
+      <ion-label class="ionItemLabel">Valor</ion-label>
+      <ion-label class="ionItemLabel">Data</ion-label>
     </ion-item>
+    <ion-item-sliding *ngFor="let conta of contas">
+      <ion-item class="ionItemTitle">
+        <ion-label>
+          {{conta.description}}
+        </ion-label>
+        <ion-label>
+          R${{conta.value | number: '2.2-9' }}
+        </ion-label>
+        <ion-label>
+          {{conta.date | date:'d/MM' }}
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option>
+          <ion-icon name="trash" (click)="removeConta(conta)"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>
-
-<!-- Inserir modo noturno, verificar local e ajustar alguns processos -->
-<!-- <ion-label>Modo noturno</ion-label>
-<ion-toggle color="dark" (ionChange)="toggleIsActive($event)"></ion-toggle> -->

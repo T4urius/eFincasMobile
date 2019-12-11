@@ -130,4 +130,14 @@
     top: 46%;
     width: 100%;
   }
+
+  .ionItemTitle {
+    text-align: center;
+
+    .ionItemLabel {
+      background-color: var(--dark);
+      color: var(--white);
+      padding: 2%;
+    }
+  }
 }

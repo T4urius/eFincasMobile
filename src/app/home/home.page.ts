@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef, Pipe, PipeTransform } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
-import { ContaService } from '../contas.service';
+import { ContaService, Conta } from '../contas.service';
 
 @Component({
   selector: 'app-home',
@@ -51,6 +51,17 @@ export class HomePage {
       });
       toast.present();
     }
+  }
+
+  removeConta(contas: Conta) {
+    this.contaService.remove(contas.id)
+      .then(async () => {
+        // Removendo do array de produtos
+        var index = this.contas.indexOf(contas);
+        this.contas.splice(index, 1);
+        const toast = await this.toast.create({ message: 'Produto removido.', duration: 3000, position: 'bottom' });
+        toast.present();
+      })
   }
 
   openRegisters() {
@@ -120,20 +131,6 @@ export class HomePage {
       });
     }
   }
-
-  // openFirst() {
-  //   this.menu.enable(true, 'first');
-  //   this.menu.open('first');
-  // }
-
-  // openEnd() {
-  //   this.menu.open('end');
-  // }
-
-  // openCustom() {
-  //   this.menu.enable(true, 'custom');
-  //   this.menu.open('custom');
-  // }
 
   // toggleIsActive(e) {
   //   if (e.detail.checked == true) {
