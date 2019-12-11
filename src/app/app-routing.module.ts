@@ -6,7 +6,6 @@ import { InvestmentsPageComponent } from './investments-page/investments-page.co
 import { ConfiguresPageComponent } from './configures-page/configures-page.component';
 import { PayPageComponent } from './manage-page/tabs/pay-page/pay-page.component';
 import { ReceivePageComponent } from './manage-page/tabs/receive-page/receive-page.component';
-import { DevelopersPageComponent } from './developer-page/developers/developers-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -25,8 +24,6 @@ const routes: Routes = [
   },
   { path: 'investments', component: InvestmentsPageComponent },
   { path: 'configures', component: ConfiguresPageComponent },
-  { path: 'developers', component: DevelopersPageComponent },
-  { path: 'developers/:id', component: DevelopersPageComponent },
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
 ];
 
