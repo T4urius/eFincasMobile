@@ -1,11 +1,13 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { Component, ViewChild, ElementRef, Pipe, PipeTransform } from '@angular/core';
+import { NavController, ToastController } from '@ionic/angular';
+import { ContaService } from '../contas.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
 export class HomePage {
 
   // @ViewChild('ionSlidesSaldoPagar', { read: ElementRef, static: false }) ionSlide: ElementRef;
@@ -27,21 +29,28 @@ export class HomePage {
     }
   }
 
-  items = [
+  contas: any[] = [];
 
-    { id: 1, name: 'Salário', valor: 'R$ 600,00', date: '10 de Abril', expanded: false },
-    { id: 2, name: 'Salário', valor: 'R$ 700,00', date: '20 de Junho', expanded: false },
-    { id: 3, name: 'Salário ', valor: 'R$ 100,00', date: '20 de Dezembro', expanded: false },
-    { id: 4, name: 'Salário ', valor: 'R$ 1000,00', date: '20 de Agosto', expanded: false },
-    { id: 5, name: 'Salário ', valor: 'R$ 900,00', date: '20 de Janeiro', expanded: false },
-    { id: 6, name: 'Transferência ', valor: 'R$ 300,00', date: '20 de Maio', expanded: false },
-    { id: 7, name: 'Transferência ', valor: 'R$ 450,00', date: '20 de Março', expanded: false },
-    { id: 8, name: 'Renda Extra ', valor: 'R$ 100,00', date: '20 de Julho', expanded: false },
-    { id: 9, name: 'Despesa ', valor: 'R$ 90,00', date: '20 de Setembro', expanded: false },
-    { id: 10, name: 'Despesa ', valor: 'R$ 20,00', date: '20 de Outubro', expanded: false },
-  ];
+  constructor(private navCtrl: NavController, private toast: ToastController, private contaService: ContaService) {
+  }
 
-  constructor(private navCtrl: NavController) {
+  ionViewDidEnter() {
+    this.getAllContas();
+  }
+
+  async getAllContas() {
+    try {
+      this.contaService.getAll()
+        .then((result: any[]) => {
+          this.contas = result;
+        });
+    } catch {
+      const toast = await this.toast.create({
+        message: 'Não foi possível carregar as contas',
+        duration: 3000
+      });
+      toast.present();
+    }
   }
 
   openRegisters() {
@@ -101,7 +110,7 @@ export class HomePage {
       item.expanded = false;
     }
     else {
-      this.items.map(listItem => {
+      this.contas.map(listItem => {
         if (item == listItem) {
           listItem.expanded = !listItem.expanded;
         } else {
@@ -134,5 +143,4 @@ export class HomePage {
   //     this.ionSlide.nativeElement.style.backgroundColor = 'azure';
   //   }
   // }
-
 }

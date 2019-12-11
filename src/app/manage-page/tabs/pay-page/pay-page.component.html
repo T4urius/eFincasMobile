@@ -1,16 +1,16 @@
 <ion-content style="width: 100%; height: 50%; top: 12%;">
   <ion-item>
     <ion-label position="floating">Digite a descrição da conta</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" name="description" [(ngModel)]="model.description"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Digite o valor a pagar</ion-label>
-    <ion-input type="number"></ion-input>
+    <ion-input type="number" name="value" [(ngModel)]="model.value"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Data do pagamento</ion-label>
     <ion-datetime displayFormat="DD/MMM/YYYY" pickerFormat="DD MMM YYYY" monthShortNames="{{months}}"
-      placeholder="Selecione a data" doneText="Ok" cancelText="Cancelar">
+      placeholder="Selecione a data" doneText="Ok" cancelText="Cancelar" name="date" [(ngModel)]="model.date">
     </ion-datetime>
   </ion-item>
 </ion-content>
@@ -19,20 +19,20 @@
     <ion-label>
       Registros
     </ion-label>
-    <ion-button style="position: relative; left: 36%;" size="small">Adicionar conta</ion-button>
+    <ion-button style="position: relative; left: 36%;" size="small" (click)="save()">Adicionar conta</ion-button>
   </ion-item-divider>
 </ion-content>
 <ion-content class="ionContent">
   <ion-list class="ionList">
-    <ion-item *ngFor="let item of items">
+    <ion-item *ngFor="let conta of contas">
       <ion-label>
-        {{item.name}}:
+        {{conta.description}}:
       </ion-label>
       <ion-label>
-        {{item.valor}}
+        R$ {{conta.value}},00
       </ion-label>
       <ion-label>
-        {{item.date}}
+        {{conta.date}}
       </ion-label>
     </ion-item>
   </ion-list>

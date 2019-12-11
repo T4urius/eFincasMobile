@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -13,6 +13,16 @@ import { RegisterPageComponentModule } from './register-page/register-page.modul
 import { ManagePageComponentModule } from './manage-page/manage-page.module';
 import { ConfiguresPageComponentModule } from './configures-page/configures-page.module';
 import { InvestmentsPageComponentModule } from './investments-page/investments-page.module';
+
+import { SQLite } from '@ionic-native/sqlite/ngx';
+import { DatabaseService } from './database.service';
+import { ContaService } from './contas.service';
+
+
+import { registerLocaleData } from '@angular/common';
+import localePT from '@angular/common/locales/pt';
+
+registerLocaleData(localePT, 'pt-BR');
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +41,10 @@ import { InvestmentsPageComponentModule } from './investments-page/investments-p
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+    SQLite,
+    DatabaseService,
+    ContaService,
   ],
   bootstrap: [AppComponent]
 })

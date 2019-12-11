@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController, ToastController } from '@ionic/angular';
+import { ContaService, Conta } from 'src/app/contas.service';
 
 @Component({
   selector: 'app-pay-page',
@@ -8,15 +10,60 @@ import { Component, OnInit } from '@angular/core';
 export class PayPageComponent implements OnInit {
 
   months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
+  contas: any[];
+  model: Conta;
 
-  items = [
-    { id: 1, name: 'Despesa ', valor: 'R$ 90,00', date: '20 de Setembro', expanded: false },
-    { id: 2, name: 'Despesa ', valor: 'R$ 20,00', date: '20 de Outubro', expanded: false },
-  ];
+  constructor(public navCtrl: NavController, private toast:
+    ToastController, private contaService: ContaService) {
+    this.model = new Conta();
+  }
 
-  constructor() { }
+  getAllContas() {
+    this.contaService.getAll().then((result: any[]) => {
+      this.contas = result;
+    })
+  }
+
+  ionViewDidLoad() {
+    this.getAllContas();
+
+    this.contaService.getAll().then((result: any[]) => {
+      this.contas = result;
+    })
+      .catch(async () => {
+        const toast = await this.toast.create({
+          message: 'Erro ao carregar contas',
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
+      })
+  }
 
   ngOnInit() {
+  }
+
+  save() {
+    this.saveConta().then(async () => {
+      const toast = await this.toast.create({
+        message: 'Conta salva',
+        color: 'success',
+        duration: 3000
+      });
+      toast.present();
+      this.navCtrl.navigateBack('');
+    }).catch(async () => {
+      const toast = await this.toast.create({
+        message: 'Não foi possível salvar a conta',
+        color: 'error',
+        duration: 3000
+      });
+      toast.present();
+    });
+  }
+
+  private saveConta() {
+    return this.contaService.insert(this.model);
   }
 
 }

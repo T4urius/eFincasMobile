@@ -93,18 +93,18 @@
 
 <ion-content class="ionContent">
   <ion-list class="ionList">
-    <ion-item *ngFor="let item of items" (click)="expandItem(item)">
+    <ion-item *ngFor="let conta of contas" (click)="expandItem(item)">
       <ion-label>
-        {{item.name}}:
+        {{conta.description}}:
       </ion-label>
       <ion-label>
         <!-- <app-expandable-component style="display: flex; position: relative; left: 60%; top: 30%;" expandHeight="100px"
           [expanded]="item.expanded"> -->
-        {{item.valor}}
+        R${{conta.value | number: '2.2-9' }}
         <!-- </app-expandable-component> -->
       </ion-label>
       <ion-label>
-        {{item.date}}
+        {{conta.date | date:'d/MM' }}
       </ion-label>
     </ion-item>
   </ion-list>
