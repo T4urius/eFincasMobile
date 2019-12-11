@@ -4,8 +4,8 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { ManagePageComponent } from './manage-page/manage-page.component';
 import { InvestmentsPageComponent } from './investments-page/investments-page.component';
 import { ConfiguresPageComponent } from './configures-page/configures-page.component';
-import { PayPageComponent } from './manage-page/tabs/pay-page/pay-page.component';
-import { ReceivePageComponent } from './manage-page/tabs/receive-page/receive-page.component';
+import { PayPageComponent } from './manage-page/pay-page/pay-page.component';
+import { ReceivePageComponent } from './manage-page/receive-page/receive-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

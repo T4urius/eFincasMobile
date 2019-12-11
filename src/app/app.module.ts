@@ -18,7 +18,6 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
 import { DatabaseService } from './database.service';
 import { ContaService } from './contas.service';
 
-
 import { registerLocaleData } from '@angular/common';
 import localePT from '@angular/common/locales/pt';
 

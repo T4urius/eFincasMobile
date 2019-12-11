@@ -5,8 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ManagePageComponent } from './manage-page.component';
-import { ReceivePageComponent } from './tabs/receive-page/receive-page.component';
-import { PayPageComponent } from './tabs/pay-page/pay-page.component';
+import { ReceivePageComponent } from './receive-page/receive-page.component';
+import { PayPageComponent } from './pay-page/pay-page.component';
 
 @NgModule({
   imports: [
