@@ -5,6 +5,13 @@
 .ionItemDividerMenu {
   background-color: var(--dark);
   color: var(--white);
+
+  .ionLabel {
+    margin: 0;
+    position: relative;
+    height: 100%;
+    top: 35%;
+  }
 }
 
 .ionSlidesSaldoPagar {
@@ -24,6 +31,12 @@
       color: var(--black);
       padding: 50px;
       width: var(--width);
+
+      .ionIconEditar {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+      }
 
       .ionCardTitleSaldo {
         color: var(--black);
@@ -70,6 +83,12 @@
       color: var(--white);
       padding: 50px;
       width: var(--width);
+
+      .ionIconEditar {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+      }
 
       .ionCardTitlePagar {
         color: var(--white);

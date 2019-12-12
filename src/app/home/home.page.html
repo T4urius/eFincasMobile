@@ -9,27 +9,27 @@
       <ion-list>
         <ion-item>
           <ion-icon name="paper" slot="start"></ion-icon>
-          <ion-label style="margin: 0; position: relative; height: 100%; top: 35%;" (click)="openManagePay()">Gerenciar
+          <ion-label class="ionLabel" (click)="openManagePay()">Gerenciar
           </ion-label>
         </ion-item>
         <ion-item>
           <ion-icon name="filing" slot="start"></ion-icon>
-          <ion-label style="margin: 0; position: relative; height: 100%; top: 35%;" (click)="openRegisters()">Registros
+          <ion-label class="ionLabel" (click)="openRegisters()">Registros
           </ion-label>
         </ion-item>
         <ion-item>
           <ion-icon name="trending-up" slot="start"></ion-icon>
-          <ion-label style="margin: 0; position: relative; height: 100%; top: 35%;" (click)="openInvestments()">
+          <ion-label class="ionLabel" (click)="openInvestments()">
             Investimentos</ion-label>
         </ion-item>
         <ion-item>
           <ion-icon name="settings" slot="start"></ion-icon>
-          <ion-label style="margin: 0; position: relative; height: 100%; top: 35%;" (click)="openConfigures()">
+          <ion-label class="ionLabel" (click)="openConfigures()">
             Configurações</ion-label>
         </ion-item>
         <ion-item>
           <ion-icon name="help-circle" slot="start"></ion-icon>
-          <ion-label style="margin: 0; position: relative; height: 100%; top: 35%;" (click)="openHelp()">
+          <ion-label class="ionLabel" (click)="openHelp()">
             Ajuda</ion-label>
         </ion-item>
       </ion-list>
@@ -50,7 +50,7 @@
         <ion-card-title class="ionCardTitleSaldo">
           Saldo atual:
         </ion-card-title>
-        <ion-icon style="position: absolute; right: 5px; top: 5px;" (click)="openManageReceive()" name="create">Editar
+        <ion-icon class="ionIconEditar" (click)="openManageReceive()" name="create">Editar
         </ion-icon>
         <ion-label id="saldoAtualLabel" (click)="openRegisters()" class="ionLabelSaldo">
           R$
@@ -70,7 +70,7 @@
         <ion-card-title class="ionCardTitlePagar">
           A pagar:
         </ion-card-title>
-        <ion-icon style="position: absolute; right: 5px; top: 5px;" (click)="openManagePay()" name="create">Editar
+        <ion-icon class="ionIconEditar" (click)="openManagePay()" name="create">Editar
         </ion-icon>
         <ion-label class="ionLabelPagar" (click)="openRegisters()">
           R$ <ion-label #totalPagar>200,00</ion-label>
