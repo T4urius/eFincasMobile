@@ -1,7 +1,7 @@
 <ion-content style="width: 100%; height: 50%; top: 12%;">
   <ion-item>
     <ion-label>Tipo de recebimento</ion-label>
-    <ion-select placeholder="Selecione um">
+    <ion-select [(ngModel)]="model.description" name="description" placeholder="Selecione um">
       <ion-select-option *ngFor="let tipoRecebimento of tipoRecebimentos">
         {{tipoRecebimento.name}}
       </ion-select-option>
@@ -9,35 +9,55 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">Digite o valor a receber</ion-label>
-    <ion-input type="number"></ion-input>
+    <ion-input type="number" name="value" [(ngModel)]="model.value"></ion-input>
   </ion-item>
+
+  <ion-item style="display: none;">
+    <ion-input type="number" name="id_type" [(ngModel)]="model.id_type"></ion-input>
+  </ion-item>
+
   <ion-item>
     <ion-label>Data do recebimento</ion-label>
     <ion-datetime displayFormat="DD/MMM/YYYY" pickerFormat="DD MMM YYYY" monthShortNames="{{months}}"
-      placeholder="Selecione a data" doneText="Ok" cancelText="Cancelar">
+      placeholder="Selecione a data" name="date" [(ngModel)]="model.date" doneText="Ok" cancelText="Cancelar">
     </ion-datetime>
   </ion-item>
 </ion-content>
 <ion-content>
   <ion-item-divider class="ionItemDivider">
     <ion-label>
-      Registros
+      Registros de Saldo
     </ion-label>
-    <ion-button style="position: relative; left: 36%;" size="small">Adicionar conta</ion-button>
+    <ion-button style="position: relative; left: 20%;" size="small" (click)="save()">Adicionar conta</ion-button>
   </ion-item-divider>
 </ion-content>
+
+
 <ion-content class="ionContent">
   <ion-list class="ionList">
-    <ion-item *ngFor="let item of items">
-      <ion-label>
-        {{item.name}}:
-      </ion-label>
-      <ion-label>
-        {{item.valor}}
-      </ion-label>
-      <ion-label>
-        {{item.date}}
-      </ion-label>
+    <ion-item class="ionItemTitle">
+      <ion-label class="ionItemLabel">Descrição</ion-label>
+      <ion-label class="ionItemLabel">Valor</ion-label>
+      <ion-label class="ionItemLabel">Data</ion-label>
     </ion-item>
+    <ion-item-sliding *ngFor="let conta of contas">
+      <ion-item class="ionItemTitle">
+        <ion-label>
+          {{conta.description}}
+        </ion-label>
+        <ion-label>
+          R${{conta.value | number: '2.2-9' }}
+        </ion-label>
+        <ion-label>
+          {{conta.date | date:'d/MM' }}
+        </ion-label>
+        <ion-icon class="ionIconRewind" name="rewind"></ion-icon>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option>
+          <ion-icon name="trash" (click)="removeConta(conta)"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>

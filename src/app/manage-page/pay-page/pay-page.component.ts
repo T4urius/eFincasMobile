@@ -18,30 +18,37 @@ export class PayPageComponent implements OnInit {
     this.model = new Conta();
   }
 
-  getAllContas() {
-    this.contaService.getAll().then((result: any[]) => {
-      this.contas = result;
-    })
-  }
-
-  ionViewDidLoad() {
-    this.getAllContas();
-
-    this.contaService.getAll().then((result: any[]) => {
-      this.contas = result;
-    })
-      .catch(async () => {
-        const toast = await this.toast.create({
-          message: 'Erro ao carregar contas',
-          duration: 3000,
-          position: 'bottom'
-        });
-        toast.present();
-      })
-  }
-
   ngOnInit() {
   }
+
+  async ionViewDidEnter() {
+    await this.getAllPay();
+  }
+
+  async getAllPay() {
+    try {
+      this.contaService.getAll()
+        .then((result: any[]) => {
+
+          let pagar = result.reduce((ids, result) => {
+
+            if (result.id_type == 1) {
+              ids.push(result);
+            }
+            return ids;
+          }, []);
+
+          this.contas = pagar;
+        });
+    } catch {
+      const toast = await this.toast.create({
+        message: 'Não foi possível carregar as contas',
+        duration: 3000
+      });
+      toast.present();
+    }
+  }
+
 
   save() {
     this.saveConta().then(async () => {
@@ -63,6 +70,7 @@ export class PayPageComponent implements OnInit {
   }
 
   private saveConta() {
+    this.model.type = 1;
     return this.contaService.insert(this.model);
   }
 

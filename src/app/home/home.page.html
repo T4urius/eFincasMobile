@@ -54,7 +54,7 @@
         </ion-icon>
         <ion-label id="saldoAtualLabel" (click)="openRegisters()" class="ionLabelSaldo">
           R$
-          <ion-label #totalSaldo> 200,00</ion-label>
+          <ion-label #totalSaldo> {{sTotal | number: '2.2-9'}}</ion-label>
         </ion-label>
         <ion-icon name="eye" class="ionIconEyeSaldo" (click)="hideSaldo()"></ion-icon>
         <ion-icon #eyeOff name="eye-off" class="ionIconEyeOffSaldo" (click)="showSaldo()"></ion-icon>
@@ -73,7 +73,7 @@
         <ion-icon class="ionIconEditar" (click)="openManagePay()" name="create">Editar
         </ion-icon>
         <ion-label class="ionLabelPagar" (click)="openRegisters()">
-          R$ <ion-label #totalPagar>200,00</ion-label>
+          R$ <ion-label #totalPagar>{{pTotal | number: '2.2-9'}}</ion-label>
         </ion-label>
         <ion-icon name="eye" class="ionIconEyePagar" (click)="hidePagar()"></ion-icon>
         <ion-icon #eyePagar name="eye-off" class="ionIconEyeOffPagar" (click)="showPagar()"></ion-icon>
@@ -87,7 +87,7 @@
 
 <ion-item-divider class="ionItemDivider">
   <ion-label>
-    Movimentações e Registros
+    Movimentações e Registros de Contas
   </ion-label>
 </ion-item-divider>
 

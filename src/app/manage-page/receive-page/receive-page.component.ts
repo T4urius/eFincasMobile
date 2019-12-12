@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Conta, ContaService } from 'src/app/contas.service';
+import { NavController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-receive-page',
@@ -8,14 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class ReceivePageComponent implements OnInit {
 
   months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
-
-  items = [
-    { id: 1, name: 'Salário', valor: 'R$ 600,00', date: '10 de Abril', expanded: false },
-    { id: 2, name: 'Salário', valor: 'R$ 700,00', date: '20 de Junho', expanded: false },
-    { id: 3, name: 'Salário ', valor: 'R$ 100,00', date: '20 de Dezembro', expanded: false },
-    { id: 4, name: 'Salário ', valor: 'R$ 1000,00', date: '20 de Agosto', expanded: false },
-    { id: 5, name: 'Salário ', valor: 'R$ 900,00', date: '20 de Janeiro', expanded: false },
-  ]
+  contas: any[];
+  model: Conta;
 
   tipoRecebimentos = [
     { id: 1, type: 'salary', name: 'Salário' },
@@ -23,8 +19,62 @@ export class ReceivePageComponent implements OnInit {
     { id: 3, type: 'other', name: 'Outros' },
   ]
 
-  constructor() { }
+  constructor(public navCtrl: NavController, private toast:
+    ToastController, private contaService: ContaService) {
+    this.model = new Conta();
+  }
 
   ngOnInit() { }
+
+  async ionViewDidEnter() {
+    await this.getAllReceive();
+  }
+
+  async getAllReceive() {
+    try {
+      this.contaService.getAll()
+        .then((result: any[]) => {
+          let saldo = result.reduce((ids, result) => {
+
+            if (result.id_type == 2) {
+              ids.push(result);
+            }
+            return ids;
+          }, []);
+
+          this.contas = saldo;
+        });
+    } catch {
+      const toast = await this.toast.create({
+        message: 'Não foi possível carregar as contas',
+        duration: 3000
+      });
+      toast.present();
+    }
+  }
+
+  save() {
+    this.saveConta().then(async () => {
+      const toast = await this.toast.create({
+        message: 'Conta salva',
+        color: 'success',
+        duration: 3000
+      });
+      toast.present();
+      this.navCtrl.navigateBack('');
+    }).catch(async () => {
+      const toast = await this.toast.create({
+        message: 'Não foi possível salvar a conta',
+        color: 'error',
+        duration: 3000
+      });
+      toast.present();
+    });
+  }
+
+  private saveConta() {
+    this.model.type = 2;
+    return this.contaService.insert(this.model);
+  }
 
 }

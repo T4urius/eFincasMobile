@@ -10,3 +10,35 @@
   background-color: var(--dark);
   color: var(--white);
 }
+
+.ionContent {
+  position: fixed;
+  bottom: 24;
+  flex-direction: column;
+
+  .ionList {
+    position: absolute;
+    bottom: 0%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    top: 0%;
+    width: 100%;
+  }
+
+  .ionItemTitle {
+    text-align: center;
+
+    .ionItemLabel {
+      background-color: var(--dark);
+      color: var(--white);
+      padding: 2%;
+    }
+
+    .ionIconRewind {
+      position: absolute;
+      right: 0;
+      zoom: 0.5;
+    }
+  }
+}

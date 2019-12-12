@@ -9,8 +9,8 @@ export class ContaService {
     public insert(conta: Conta) {
         return this.dbService.getDB()
             .then((db: SQLiteObject) => {
-                let sql = 'insert into contas (description, value, date) values (?, ?, ?)'
-                let data = [conta.description, conta.value, conta.date];
+                let sql = 'insert into contas (description, value, date, id_type) values (?, ?, ?, ?)'
+                let data = [conta.description, conta.value, conta.date, conta.type];
 
                 return db.executeSql(sql, data)
                     .catch((e) => console.error(e));
@@ -55,7 +55,8 @@ export class ContaService {
 
 export class Conta {
     id: number;
-    description: string;
-    value: string;
+    description: string = '';
+    value: number = 0;
     date: Date;
+    type: number;
 }
