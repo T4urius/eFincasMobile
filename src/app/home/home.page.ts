@@ -19,6 +19,9 @@ export class HomePage {
   @ViewChild('totalPagar', { read: ElementRef, static: false }) totalPagar: ElementRef;
   @ViewChild('pagar', { read: ElementRef, static: false }) pagar: ElementRef;
 
+  @ViewChild('totalInvestimentos', { read: ElementRef, static: false }) totalInvestimentos: ElementRef;
+  @ViewChild('eyeInvestimentos', { read: ElementRef, static: false }) eyeInvestimentos: ElementRef;
+
   slideOpts = {
     speed: 400,
     initialSlide: 1,
@@ -193,6 +196,11 @@ export class HomePage {
     this.totalSaldo.nativeElement.style.visibility = 'hidden';
   }
 
+  hideInvestimentos() {
+    this.eyeInvestimentos.nativeElement.style.visibility = 'visible';
+    this.totalInvestimentos.nativeElement.style.visibility = 'hidden';
+  }
+
   hidePagar() {
     this.eyePagar.nativeElement.style.visibility = 'visible';
     this.pagar.nativeElement.style.visibility = 'hidden';
@@ -203,6 +211,11 @@ export class HomePage {
     this.receber.nativeElement.style.visibility = 'visible';
     this.totalSaldo.nativeElement.style.visibility = 'visible';
     this.eyeOff.nativeElement.style.visibility = 'hidden';
+  }
+
+  showInvestimentos() {
+    this.totalInvestimentos.nativeElement.style.visibility = 'visible';
+    this.eyeInvestimentos.nativeElement.style.visibility = 'hidden';
   }
 
   showPagar() {
