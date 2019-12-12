@@ -83,6 +83,20 @@
       </ion-card-content>
     </ion-card>
   </ion-slide>
+  <ion-slide>
+    <ion-card class="ionCardInvestimentos">
+      <ion-card-content class="ionCardContentInvestimentos">
+        <ion-card-title class="ionCardTitleInvestimentos">
+          Investimentos:
+        </ion-card-title>
+        <ion-label class="ionLabelInvestimentos" (click)="openInvestments()">
+          R$ <ion-label #totalInvestimentos>{{investimentos | number: '2.2-9'}}</ion-label>
+        </ion-label>
+        <ion-icon name="eye" class="ionIconEyeInvestimentos" (click)="hideInvestimentos()"></ion-icon>
+        <ion-icon #eyePagar name="eye-off" class="ionIconEyeOffInvestimentos" (click)="showInvestimentos()"></ion-icon>
+      </ion-card-content>
+    </ion-card>
+  </ion-slide>
 </ion-slides>
 
 <ion-item-divider class="ionItemDivider">

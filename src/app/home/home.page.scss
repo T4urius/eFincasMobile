@@ -131,6 +131,48 @@
   }
 }
 
+.ionCardInvestimentos {
+  background-color: orangered;
+  width: 76%;
+  height: 70%;
+
+  .ionCardContentInvestimentos {
+    color: var(--white);
+    padding: 50px;
+    width: var(--width);
+
+    .ionCardTitleInvestimentos {
+      color: var(--white);
+      font-size: large;
+      position: absolute;
+      right: 60%;
+      top: 12%;
+    }
+
+    .ionLabelInvestimentos {
+      position: absolute;
+      right: 10%;
+      bottom: 0%;
+      font-size: xx-large;
+    }
+
+    .ionIconEyeInvestimentos {
+      position: absolute;
+      left: 10%;
+      bottom: 11%;
+      zoom: 2;
+    }
+
+    .ionIconEyeOffInvestimentos {
+      position: absolute;
+      left: 10%;
+      bottom: 11%;
+      zoom: 2;
+      visibility: hidden;
+    }
+  }
+}
+
 .ionItemDivider {
   background-color: var(--dark);
   color: var(--white);

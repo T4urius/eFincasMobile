@@ -35,6 +35,7 @@ export class HomePage {
   sTotal: number = 0;
   pReceber: number = 0;
   sReceber: number = 0;
+  investimentos: number = 0;
 
   constructor(private navCtrl: NavController, private toast: ToastController, private contaService: ContaService) {
   }
