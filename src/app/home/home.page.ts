@@ -33,6 +33,8 @@ export class HomePage {
   pTotal: number = 0;
   values: number = 0;
   sTotal: number = 0;
+  pReceber: number = 0;
+  sReceber: number = 0;
 
   constructor(private navCtrl: NavController, private toast: ToastController, private contaService: ContaService) {
   }
@@ -41,6 +43,52 @@ export class HomePage {
     await this.getAllContas();
     await this.somaAPagar();
     await this.somaSaldo();
+    await this.aReceber();
+    await this.pagReceber();
+  }
+
+  async aReceber() {
+    await this.contaService.getAll()
+      .then((result: any[]) => {
+        if (result != null) {
+
+          let saldo = result.reduce((ids, result) => {
+
+            if (result.id_type == 2 && result.date > Date.now) {
+              ids.push(result);
+            }
+            return ids;
+          }, []);
+
+          for (let i = 0; i < saldo.length; i++) {
+            this.values += parseInt(saldo[i].value);
+          }
+          this.pReceber = this.values;
+          this.values = 0;
+        }
+      })
+  }
+
+  async pagReceber() {
+    await this.contaService.getAll()
+      .then((result: any[]) => {
+        if (result != null) {
+
+          let saldo = result.reduce((ids, result) => {
+
+            if (result.id_type == 1 && result.date < Date.now) {
+              ids.push(result);
+            }
+            return ids;
+          }, []);
+
+          for (let i = 0; i < saldo.length; i++) {
+            this.values += parseInt(saldo[i].value);
+          }
+          this.sReceber = this.values;
+          this.values = 0;
+        }
+      })
   }
 
   async somaSaldo() {

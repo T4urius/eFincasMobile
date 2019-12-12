@@ -59,7 +59,7 @@
         <ion-icon name="eye" class="ionIconEyeSaldo" (click)="hideSaldo()"></ion-icon>
         <ion-icon #eyeOff name="eye-off" class="ionIconEyeOffSaldo" (click)="showSaldo()"></ion-icon>
         <ion-label class="ionLabel2Saldo">
-          A receber: R$<ion-label #receber> 1050,00</ion-label>
+          A receber: R$<ion-label #receber> {{sReceber | number: '2.2-9'}}</ion-label>
         </ion-label>
       </ion-card-content>
     </ion-card>
@@ -78,7 +78,7 @@
         <ion-icon name="eye" class="ionIconEyePagar" (click)="hidePagar()"></ion-icon>
         <ion-icon #eyePagar name="eye-off" class="ionIconEyeOffPagar" (click)="showPagar()"></ion-icon>
         <ion-label class="ionLabel2Pagar">
-          Pagar até receber: R$ <ion-label #pagar>150,00</ion-label>
+          Pagar até receber: R$ <ion-label #pagar>{{pReceber | number: '2.2-9'}}</ion-label>
         </ion-label>
       </ion-card-content>
     </ion-card>
