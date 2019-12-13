@@ -59,7 +59,7 @@
         <ion-icon name="eye" class="ionIconEyeSaldo" (click)="hideSaldo()"></ion-icon>
         <ion-icon #eyeOff name="eye-off" class="ionIconEyeOffSaldo" (click)="showSaldo()"></ion-icon>
         <ion-label class="ionLabel2Saldo">
-          A receber: R$<ion-label #receber> {{sReceber | number: '2.2-9'}}</ion-label>
+          A receber: R$<ion-label #receber> {{pReceber | number: '2.2-9'}}</ion-label>
         </ion-label>
       </ion-card-content>
     </ion-card>
@@ -78,7 +78,7 @@
         <ion-icon name="eye" class="ionIconEyePagar" (click)="hidePagar()"></ion-icon>
         <ion-icon #eyePagar name="eye-off" class="ionIconEyeOffPagar" (click)="showPagar()"></ion-icon>
         <ion-label class="ionLabel2Pagar">
-          Pagar até receber: R$ <ion-label #pagar>{{pReceber | number: '2.2-9'}}</ion-label>
+          Pagar após receber: R$ <ion-label #pagar>{{sReceber | number: '2.2-9'}}</ion-label>
         </ion-label>
       </ion-card-content>
     </ion-card>
@@ -93,7 +93,8 @@
           R$ <ion-label #totalInvestimentos>{{investimentos | number: '2.2-9'}}</ion-label>
         </ion-label>
         <ion-icon name="eye" class="ionIconEyeInvestimentos" (click)="hideInvestimentos()"></ion-icon>
-        <ion-icon #eyeInvestimentos name="eye-off" class="ionIconEyeOffInvestimentos" (click)="showInvestimentos()"></ion-icon>
+        <ion-icon #eyeInvestimentos name="eye-off" class="ionIconEyeOffInvestimentos" (click)="showInvestimentos()">
+        </ion-icon>
       </ion-card-content>
     </ion-card>
   </ion-slide>
