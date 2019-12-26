@@ -12,7 +12,7 @@
   </ion-item>
   <ion-item>
     <ion-label>Data do pagamento</ion-label>
-    <ion-datetime displayFormat="DD/MMM/YYYY" pickerFormat="DD MMM YYYY" monthShortNames="{{months}}"
+    <ion-datetime displayFormat="DD/MMM/YYYY" max="2100" pickerFormat="DD MMM YYYY" monthShortNames="{{months}}"
       placeholder="Selecione a data" doneText="Ok" cancelText="Cancelar" name="date" [(ngModel)]="model.date">
     </ion-datetime>
   </ion-item>

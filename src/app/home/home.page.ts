@@ -36,6 +36,8 @@ export class HomePage {
   private pTotal: number = 0;
   private sTotal: number = 0;
   private pReceber: number = 0;
+  private daysReceber: any[] = [];
+  private daysPagar: any[] = [];
   private sReceber: number = 0;
   private investimentos: number = 0;
   private dateNow = new Date();
@@ -45,105 +47,64 @@ export class HomePage {
 
   async ionViewDidEnter() {
     await this.getAllContas();
-    await this.calcularTotal();
-    await this.calcularReceber();
+    await this.calcular();
   }
 
-  async calcularReceber() {
-    let valuePagar: number = 0;
+  async calcular() {
     let valueReceber: number = 0;
+    let valuePagar: number = 0;
 
-    //Acessando todos os registros de conta
     await this.contaService.getAll()
       .then((result: any[]) => {
         if (result != null) {
+          var resultReceber = result.filter(e => e.id_type == 2);
+          var resultPagar = result.filter(e => e.id_type == 1);
 
-          //gerando a lista com o type pagar
-          let pagar = result.reduce((ids, result) => {
-
-            if (result.id_type == 1) {
-              ids.push(result);
+          if (resultReceber != null) {
+            var filterReceber = resultReceber.filter(e => new Date(e.date).getDate() > this.dateNow.getDate());
+            if (filterReceber != null) {
+              for (let i = 0; i < filterReceber.length; i++) {
+                this.daysReceber.push(new Date(filterReceber[i].date).getDate());
+                valueReceber += parseInt(filterReceber[i].value);
+              }
+              this.sTotal = valueReceber;
+              valueReceber = 0;
             }
-            return ids;
-          }, []);
-
-          //fazendo a soma de todos os values de pagar
-          for (let i = 0; i < pagar.length; i++) {
-            valuePagar += parseInt(pagar[i].value);
           }
-          this.sReceber = valuePagar;
-          valuePagar = 0;
 
-          //gerando a lista com o type receber
-          let receber = result.reduce((ids, result) => {
-
-            let monthDate = result.date.substr(5, 2);
-            let dayDate = result.date.substr(8, 2);
-
-            //regra para validação se o mês de recebimento é maior ou igual que o mês atual
-            if (result.id_type == 2 && monthDate >= this.dateNow.getMonth() + 1 && dayDate > this.dateNow.getDate()) {
-              ids.push(result);
+          if (resultPagar != null) {
+            for (let i = 0; i < resultPagar.length; i++) {
+              this.daysPagar.push(new Date(resultPagar[i].date).getDate());
             }
-            return ids;
-          }, []);
+            if (this.daysReceber != null) {
+              let minDayReceber = Math.min.apply(null, this.daysReceber);
+              let minDayPagar = Math.min.apply(null, this.daysPagar);
+              // let maxDayReceber = Math.max.apply(null, this.daysReceber);
+              // let maxDayPagar = Math.max.apply(null, this.daysPagar);
 
-          //fazendo a soma de todos os values de receber
-          for (let i = 0; i < receber.length; i++) {
-            valueReceber += parseInt(receber[i].value);
+              if (minDayReceber < minDayPagar) {
+                for (let i = 0; i < resultPagar.length; i++) {
+                  valuePagar += parseInt(resultPagar[i].value);
+                }
+
+                this.sReceber = valuePagar;
+                valuePagar = 0;
+              }
+              else {
+                this.pTotal = valuePagar;
+                valuePagar = 0;
+              }
+            }
           }
-          this.pReceber = valueReceber;
-          valueReceber = 0;
         }
       })
   }
 
   async calcularTotal() {
-    let valuePagar: number = 0;
-    let valueReceber: number = 0;
-
-    //acessando todos os registros de conta
     await this.contaService.getAll()
       .then((result: any[]) => {
         if (result != null) {
-
-          //gerando lista de receber com o type 2
-          var receber = result.reduce((ids, result) => {
-
-            let monthDate = result.date.substr(5, 2);
-            let dayDate = result.date.substr(8, 2);
-
-            if (result.id_type == 2) {
-              if (monthDate < this.dateNow.getMonth() + 1) {
-                ids.push(result);
-              }
-              else if (monthDate == this.dateNow.getMonth() + 1) {
-                if (dayDate <= this.dateNow.getDate()) {
-                  ids.push(result);
-                }
-              }
-            }
-            return ids;
-          }, []);
-
-          for (let i = 0; i < receber.length; i++) {
-            valueReceber += parseInt(receber[i].value);
-          }
-          this.sTotal = valueReceber;
-          valueReceber = 0;
-
-          let apagar = result.filter(x => x.id_type == 1);
-          let areceber = result.filter(x => x.id_type == 2);
-          let dayAReceber = areceber.filter(x => new Date(x.date).getDay());
-
-
-          let dayAPagar = apagar.filter(x => new Date(x.date).getDate() < 25);
-
-          for (let i = 0; i < dayAPagar.length; i++) {
-            valuePagar += parseInt(dayAPagar[i].value);
-          }
-          this.pTotal = valuePagar;
-          valuePagar = 0;
-
+          console.log(result);
         }
       })
   }
@@ -171,8 +132,7 @@ export class HomePage {
         this.contas.splice(index, 1);
         const toast = await this.toast.create({ message: 'Produto removido.', duration: 3000, position: 'bottom' });
         toast.present();
-        await this.calcularTotal();
-        await this.calcularReceber();
+        await this.calcular();
       })
   }
 
