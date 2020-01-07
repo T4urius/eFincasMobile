@@ -68,7 +68,7 @@
     <ion-card class="ionCardPagar">
       <ion-card-content class="ionCardContentPagar">
         <ion-card-title class="ionCardTitlePagar">
-          A pagar:
+          A pagar no mês atual:
         </ion-card-title>
         <ion-icon class="ionIconEditar" (click)="openManagePay()" name="create">Editar
         </ion-icon>
@@ -77,9 +77,6 @@
         </ion-label>
         <ion-icon name="eye" class="ionIconEyePagar" (click)="hidePagar()"></ion-icon>
         <ion-icon #eyePagar name="eye-off" class="ionIconEyeOffPagar" (click)="showPagar()"></ion-icon>
-        <ion-label class="ionLabel2Pagar">
-          Pagar após receber: R$ <ion-label #pagar>{{sReceber | number: '2.2-9'}}</ion-label>
-        </ion-label>
       </ion-card-content>
     </ion-card>
   </ion-slide>

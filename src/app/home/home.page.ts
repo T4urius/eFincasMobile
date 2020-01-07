@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, Pipe, PipeTransform, OnChanges } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { ContaService, Conta } from '../contas.service';
+import { getLocaleMonthNames } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,6 @@ export class HomePage {
 
   @ViewChild('eyePagar', { read: ElementRef, static: false }) eyePagar: ElementRef;
   @ViewChild('totalPagar', { read: ElementRef, static: false }) totalPagar: ElementRef;
-  @ViewChild('pagar', { read: ElementRef, static: false }) pagar: ElementRef;
 
   @ViewChild('totalInvestimentos', { read: ElementRef, static: false }) totalInvestimentos: ElementRef;
   @ViewChild('eyeInvestimentos', { read: ElementRef, static: false }) eyeInvestimentos: ElementRef;
@@ -34,11 +34,8 @@ export class HomePage {
 
   private contas: any[] = [];
   private pTotal: number = 0;
-  private sTotal: number = 0;
   private pReceber: number = 0;
-  private daysReceber: any[] = [];
-  private daysPagar: any[] = [];
-  private sReceber: number = 0;
+  private sTotal: number = 0;
   private investimentos: number = 0;
   private dateNow = new Date();
 
@@ -51,60 +48,37 @@ export class HomePage {
   }
 
   async calcular() {
-    let valueReceber: number = 0;
     let valuePagar: number = 0;
+    let valueReceber: number = 0;
 
     await this.contaService.getAll()
       .then((result: any[]) => {
         if (result != null) {
-          var resultReceber = result.filter(e => e.id_type == 2);
-          var resultPagar = result.filter(e => e.id_type == 1);
+          let pagar = result.filter(e => e.id_type == 1);
+          let receber = result.filter(e => e.id_type == 2);
 
-          if (resultReceber != null) {
-            var filterReceber = resultReceber.filter(e => new Date(e.date).getDate() > this.dateNow.getDate());
-            if (filterReceber != null) {
-              for (let i = 0; i < filterReceber.length; i++) {
-                this.daysReceber.push(new Date(filterReceber[i].date).getDate());
-                valueReceber += parseInt(filterReceber[i].value);
-              }
+          pagar.reduce((i, result) => {
+            let monthPagar = new Date(result.date).getMonth();
+            let dayPagar = new Date(result.date).getDate();
+            if (monthPagar == this.dateNow.getMonth()) {
+              valuePagar += parseInt(result.value);
+              this.pTotal = valuePagar;
+            }
+          }, 0);
+
+          receber.reduce((i, result) => {
+            let monthSaldo = new Date(result.date).getMonth();
+            let daySaldo = new Date(result.date).getDate();
+            if (monthSaldo <= this.dateNow.getMonth() && daySaldo <= this.dateNow.getDate()) {
+              valueReceber += parseInt(result.value);
               this.sTotal = valueReceber;
               valueReceber = 0;
             }
-          }
-
-          if (resultPagar != null) {
-            for (let i = 0; i < resultPagar.length; i++) {
-              this.daysPagar.push(new Date(resultPagar[i].date).getDate());
+            else if (monthSaldo >= this.dateNow.getMonth() && daySaldo > this.dateNow.getDate()) {
+              valueReceber += parseInt(result.value);
+              this.pReceber = valueReceber;
             }
-            if (this.daysReceber != null) {
-              let minDayReceber = Math.min.apply(null, this.daysReceber);
-              let minDayPagar = Math.min.apply(null, this.daysPagar);
-              // let maxDayReceber = Math.max.apply(null, this.daysReceber);
-              // let maxDayPagar = Math.max.apply(null, this.daysPagar);
-
-              if (minDayReceber < minDayPagar) {
-                for (let i = 0; i < resultPagar.length; i++) {
-                  valuePagar += parseInt(resultPagar[i].value);
-                }
-
-                this.sReceber = valuePagar;
-                valuePagar = 0;
-              }
-              else {
-                this.pTotal = valuePagar;
-                valuePagar = 0;
-              }
-            }
-          }
-        }
-      })
-  }
-
-  async calcularTotal() {
-    await this.contaService.getAll()
-      .then((result: any[]) => {
-        if (result != null) {
-          console.log(result);
+          }, 0);
         }
       })
   }
@@ -173,12 +147,10 @@ export class HomePage {
 
   hidePagar() {
     this.eyePagar.nativeElement.style.visibility = 'visible';
-    this.pagar.nativeElement.style.visibility = 'hidden';
     this.totalPagar.nativeElement.style.visibility = 'hidden';
   }
 
   showSaldo() {
-    this.receber.nativeElement.style.visibility = 'visible';
     this.totalSaldo.nativeElement.style.visibility = 'visible';
     this.eyeOff.nativeElement.style.visibility = 'hidden';
   }
@@ -190,7 +162,6 @@ export class HomePage {
 
   showPagar() {
     this.eyePagar.nativeElement.style.visibility = 'hidden';
-    this.pagar.nativeElement.style.visibility = 'visible';
     this.totalPagar.nativeElement.style.visibility = 'visible';
   }
 

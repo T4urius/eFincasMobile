@@ -40,6 +40,7 @@ export class DatabaseService {
                     db.sqlBatch([
                         ['insert into types (description) values (?)', ['A pagar']],
                         ['insert into types (description) values (?)', ['A receber']],
+                        ['insert into types (description) values (?)', ['Investimentos']],
                     ])
                         .then(() =>
                             console.log('Dados padrões incluídos'))
